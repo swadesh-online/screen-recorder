@@ -1,0 +1,1 @@
+sox -t waveaudio "Stereo Mix" C:\rec\output.wav
