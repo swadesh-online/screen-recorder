@@ -1,1 +1,1 @@
-sox -t waveaudio "Stereo Mix" C:\rec\output.wav
+sox -t waveaudio "Stereo Mix" D:\record\okok\soxOutput.wav

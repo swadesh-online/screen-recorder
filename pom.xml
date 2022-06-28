@@ -19,6 +19,14 @@
   <version>0.7.0</version>
 </dependency>
 
+<!-- https://mvnrepository.com/artifact/net.sf.jpathwatch/jpathwatch -->
+<dependency>
+    <groupId>net.sf.jpathwatch</groupId>
+    <artifactId>jpathwatch</artifactId>
+    <version>0.95</version>
+</dependency>
+
+
   </dependencies>
 <properties>
 <maven.compiler.source>11</maven.compiler.source>

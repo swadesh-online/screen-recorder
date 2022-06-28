@@ -15,14 +15,11 @@ public class ffmpegUtility {
 		this.recordingPath = recordingPath;
 	}
 
-	public void mergeAudioAndVideo(String fileName) throws IOException {
+	public void mergeAudioAndVideo() throws IOException {
 
-		// ffmpeg -i demo.mp4 -i output.wav -filter_complex
-		// "[0:a][1:a]amix=2:shortest[aout]" -map 0:v -map "[aout]" final_output.mp4
-
-		processBuilder.command("ffmpeg", "-i", this.recordingPath + fileName + ".mov", "-i",
-				this.recordingPath + "output.wav", "-filter_complex", "\"[0:a][1:a]amix=2:shortest[aout]\"", "-map",
-				"0:v", "-map", "\"[aout]\"", this.recordingPath + "final_output2.mp4");
+		processBuilder.command("ffmpeg", "-i", this.recordingPath + File.separator + "monteOutput.mov", "-i",
+				this.recordingPath + "soxOutput.wav", "-filter_complex", "\"[0:a][1:a]amix=2:shortest[aout]\"", "-map",
+				"0:v", "-map", "\"[aout]\"", this.recordingPath + "recording.mp4");
 		process = processBuilder.inheritIO().start();
 
 		try {
@@ -41,9 +38,10 @@ public class ffmpegUtility {
 
 	boolean deleteResidualFiles() {
 
-		File videoFile = new File(recordingPath + "demo.mov");
-		File audioFile = new File(recordingPath + "output.wav");
-		if (videoFile.delete() && audioFile.delete()) {
+		File videoFile = new File(recordingPath + "monteOutput.mov");
+		File audioFile = new File(recordingPath + "soxOutput.wav");
+		File stopFile = new File(recordingPath + "stop.scr");
+		if (videoFile.delete() && audioFile.delete() && stopFile.delete()) {
 
 			return true;
 		}
